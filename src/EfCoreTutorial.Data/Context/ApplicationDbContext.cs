@@ -40,10 +40,8 @@ namespace EfCoreTutorial.Data.Context
                 entity.Property(i => i.LastName).HasColumnName("last_name").HasColumnType("nvarchar").HasMaxLength(100);
                 entity.Property(i => i.BirthDate).HasColumnName("birth_date");
                 entity.Property(i => i.Number).HasColumnName("nuber");
+                entity.Property(i => i.AddressId).HasColumnName("address_id");
 
-                entity.HasOne(i => i.Adress).WithOne(i => i.Student)
-                .HasForeignKey<StudentAdress>(i => i.StudentId)
-                .HasConstraintName("student_address_id_fk");
             });
             modelBuilder.Entity<Teacher>(entity =>
             {
@@ -69,7 +67,10 @@ namespace EfCoreTutorial.Data.Context
                 entity.Property(i => i.District).HasColumnName("district").HasMaxLength(150);
                 entity.Property(i => i.Country).HasColumnName("country").HasMaxLength(150);
                 entity.Property(i => i.FullAdress).HasColumnName("full_adress").HasMaxLength(150);
-                entity.Property(i => i.StudentId).HasColumnName("student_id");
+
+                entity.HasOne(i => i.Student).WithOne(i => i.Adress)
+                .HasForeignKey<Student>(i => i.AddressId)
+                .HasConstraintName("student_address_student_id_fk");
             });
             base.OnModelCreating(modelBuilder);
         }
