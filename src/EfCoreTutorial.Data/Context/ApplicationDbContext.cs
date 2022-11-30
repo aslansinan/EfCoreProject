@@ -19,6 +19,9 @@ namespace EfCoreTutorial.Data.Context
         {
 
         }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Student> Students { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
            if (!optionsBuilder.IsConfigured){
@@ -28,7 +31,7 @@ namespace EfCoreTutorial.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("dbo");
-
+            
             modelBuilder.Entity<Student>(entity =>
             {
                 entity.ToTable("students");
