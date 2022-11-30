@@ -1,4 +1,5 @@
-﻿using EfCoreTutorial.Data.Models;
+﻿using EfCoreTutorial.Common;
+using EfCoreTutorial.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,10 +23,11 @@ namespace EfCoreTutorial.Data.Context
         public DbSet<Course> Courses { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<StudentAdress> studentAdresses { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
            if (!optionsBuilder.IsConfigured){
-                optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS01;Database=EfCoreTutorial;Trusted_Connection=True;TrustServerCertificate=true;Encrypt=True;");
+                optionsBuilder.UseSqlServer(StringConstants.DbConnectionString);
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -73,7 +75,7 @@ namespace EfCoreTutorial.Data.Context
             modelBuilder.Entity<StudentAdress>(entity =>
             {
                 entity.ToTable("student_adresses");
-                entity.Property(i => i.Id).HasColumnName("id").IsRequired().UseIdentityColumn();
+                entity.Property(i => i.Id).HasColumnName("id").IsRequired().UseIdentityColumn().ValueGeneratedOnAdd();
                 entity.Property(i => i.City).HasColumnName("city").HasMaxLength(50);
                 entity.Property(i => i.District).HasColumnName("district").HasMaxLength(150);
                 entity.Property(i => i.Country).HasColumnName("country").HasMaxLength(150);

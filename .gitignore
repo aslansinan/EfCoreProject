@@ -15,3 +15,7 @@
 /src/EfCoreTutorial.WebApii/obj/Debug/net6.0/EfCoreTutorial.WebApii.pdb
 /src/EfCoreTutorial.WebApii/obj/Debug/net6.0/EfCoreTutorial.WebApii.MvcApplicationPartsAssemblyInfo.cs
 /src/EfCoreTutorial.WebApii/obj/Debug/net6.0
+/src/EfCoreTutorial.Common/bin/Debug/netstandard2.1
+/src/EfCoreTutorial.Common/obj/Debug/netstandard2.1
+/src/EfCoreTutorial.Common/obj
+/src/EfCoreTutorial.Common/EfCoreTutorial.Common.csproj
