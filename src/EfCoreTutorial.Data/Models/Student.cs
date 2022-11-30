@@ -13,5 +13,6 @@ namespace EfCoreTutorial.Data.Models
         public string LastName { get; set; }
         public decimal Number { get; set; }
         public DateTime BirthDate { get; set; }
+        public virtual StudentAdress Adress { get; set; }
     }
 }
