@@ -42,6 +42,11 @@ namespace EfCoreTutorial.Data.Context
                 entity.Property(i => i.Number).HasColumnName("nuber");
                 entity.Property(i => i.AddressId).HasColumnName("address_id");
 
+                entity.HasMany(i => i.Books)//hedef table
+                .WithOne(İ => İ.Student) //student tablosunda oto artan id
+                .HasForeignKey(i => i.StudentId) //book tablosundaki alan
+                .HasConstraintName("student_book_id_fk");
+
             });
             modelBuilder.Entity<Teacher>(entity =>
             {
@@ -58,7 +63,13 @@ namespace EfCoreTutorial.Data.Context
                 entity.Property(i => i.Name).HasColumnName("name").HasColumnType("nvarchar").HasMaxLength(100);
                 entity.Property(i => i.isActive).HasColumnName("is_active");
             });
-
+            modelBuilder.Entity<Book>(entity =>
+            {
+                entity.ToTable("book");
+                entity.Property(i => i.Id).HasColumnName("id").HasColumnType("int").IsRequired().UseIdentityColumn();
+                entity.Property(i => i.Name).HasColumnName("name").HasColumnType("nvarchar").HasMaxLength(100);
+                entity.Property(i => i.Author).HasColumnName("author").HasMaxLength(100); ;
+            });
             modelBuilder.Entity<StudentAdress>(entity =>
             {
                 entity.ToTable("student_adresses");
