@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace EfCoreTutorial.Data.Models
 {
-    public class Student
+    public class Course
     {
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public decimal Number { get; set; }
-        public DateTime BirthDate { get; set; }
+        public string Name { get; set; }
+        public bool isActive { get; set; }
     }
 }

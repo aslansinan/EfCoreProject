@@ -3,3 +3,15 @@
 ################################################################################
 
 /.vs
+/src/EfCoreTutorial.Data/bin/Debug/net6.0
+/src/EfCoreTutorial.Data/obj/Debug/net6.0/ref/EfCoreTutorial.Data.dll
+/src/EfCoreTutorial.Data/obj/Debug/net6.0/refint/EfCoreTutorial.Data.dll
+/src/EfCoreTutorial.WebApii/bin/Debug/net6.0
+/src/EfCoreTutorial.WebApii/obj/Debug/net6.0/ref/EfCoreTutorial.WebApii.dll
+/src/EfCoreTutorial.WebApii/obj/Debug/net6.0/refint/EfCoreTutorial.WebApii.dll
+/src/EfCoreTutorial.WebApii/obj/staticwebassets.pack.sentinel
+/src/EfCoreTutorial.WebApii/obj/Debug/net6.0/_IsIncrementalBuild
+/src/EfCoreTutorial.WebApii/obj/Debug/net6.0/staticwebassets.build.json
+/src/EfCoreTutorial.WebApii/obj/Debug/net6.0/EfCoreTutorial.WebApii.pdb
+/src/EfCoreTutorial.WebApii/obj/Debug/net6.0/EfCoreTutorial.WebApii.MvcApplicationPartsAssemblyInfo.cs
+/src/EfCoreTutorial.WebApii/obj/Debug/net6.0
