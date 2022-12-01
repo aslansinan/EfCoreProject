@@ -19,6 +19,7 @@ namespace EfCoreTutorial.WebApii.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
+           // var students = applicationDbContext.Students.Where(i => i.FirstName =="sinan").OrderBy(i => i.Number).ToListAsync();
             var students =  applicationDbContext.Students.ToListAsync();//Filtreleme yaparken en sonda tolist ve  ToListAsync gibi avg,sum,sonda kullanmak daha doğru bir yapıdır.
             return Ok(students);
         }
