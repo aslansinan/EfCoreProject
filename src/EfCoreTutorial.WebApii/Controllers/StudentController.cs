@@ -16,9 +16,32 @@ namespace EfCoreTutorial.WebApii.Controllers
         {
             this.applicationDbContext = applicationDbContext;
         }
+        private async Task eagerLoadings() // default olarak kullanılır nuget indirmeye ihtiyaç duyulmaz.
+        {
+            var student = await applicationDbContext.Students //eager=left-join sonucu oluşan talo örneği gibi tek seferde gelir.
+                .Include(i => i.Books) //bu yapı ile birlikte çağırdığımız tabloya bağlı olan bire çok gibi bağlantıları ekleriz.
+                //bir adım sonrasına ilerlemek istersek yani book içinden de alt class için (theninclude) kullanılı.
+                .FirstOrDefaultAsync(i => i.Id == 5);
+        }
+        private async Task lazyLoadings()
+        {
+            //var student = await applicationDbContext.Students.FirstOrDefaultAsync(i => i.Id == 5);
+            //var books = student.Books; //get edildiğinde bookslar doldurulur.
+            var students = await applicationDbContext.Students.ToListAsync();
+            foreach (var student in students)
+            {
+                foreach (var book in student.Books) // BU yapıda sürekli tcp ip bağlantısı açık kalır.
+                {
+                    Console.WriteLine(book.Name);
+                }
+            }
+        }
         [HttpGet]
         public async Task<IActionResult> Get()
         {
+           // await eagerLoadings();
+            await lazyLoadings();
+            return null;
            // var students = applicationDbContext.Students.Where(i => i.FirstName =="sinan").OrderBy(i => i.Number).ToListAsync();
             var students =  applicationDbContext.Students.ToListAsync();//Filtreleme yaparken en sonda tolist ve  ToListAsync gibi avg,sum,sonda kullanmak daha doğru bir yapıdır.
             return Ok(students);

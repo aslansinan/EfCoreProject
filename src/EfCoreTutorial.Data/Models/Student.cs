@@ -16,7 +16,7 @@ namespace EfCoreTutorial.Data.Models
         public int AddressId { get; set; } //birebir ilişki
         public virtual StudentAdress Adress { get; set; } //bire çok ilişki
 
-        public ICollection<Book> Books { get; set; } // bire-çok
+        public virtual ICollection<Book> Books { get; set; } // bire-çok
         public virtual ICollection<Course> Courses { get; set; } // çoka-çok
     }
 }
